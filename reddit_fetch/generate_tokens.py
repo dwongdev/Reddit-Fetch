@@ -2,11 +2,12 @@ import time
 import requests
 import base64
 import os
+import sys
 import webbrowser
 import threading
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlencode, urlparse, parse_qs
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -17,7 +18,7 @@ CLIENT_ID = os.getenv("CLIENT_ID", "").strip()
 CLIENT_SECRET = os.getenv("CLIENT_SECRET", "").strip()
 REDIRECT_URI = os.getenv("REDIRECT_URI", "").strip()  # Must match the one registered in Reddit App
 USER_AGENT = os.getenv("USER_AGENT", "").strip()  # Fetch dynamically
-TOKEN_FILE = "tokens.json"
+TOKEN_FILE = "/data/tokens.json" if os.getenv("DOCKER", "0") == "1" else "tokens.json"
 
 # Global variable to store auth code
 auth_code = None
@@ -32,16 +33,22 @@ class AuthHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.end_headers()
             self.wfile.write(b"Authorization successful! You can close this tab.")
-            print(f"✅ Authorization Code Captured: {auth_code}")
+            print("✅ Authorization code received.")
         else:
             self.send_response(400)
             self.end_headers()
             self.wfile.write(b"Error: Authorization code not found.")
 
+    def log_message(self, format, *args):
+        pass
+
 def start_auth_server():
     """Starts a local HTTP server to capture the Reddit authorization code."""
-    server = HTTPServer(("localhost", 8080), AuthHandler)
-    print("🌍 Waiting for authorization...")
+    parsed = urlparse(REDIRECT_URI)
+    port = parsed.port or 80
+    host = "0.0.0.0" if os.getenv("DOCKER", "0") == "1" else "localhost"
+    server = HTTPServer((host, port), AuthHandler)
+    print(f"Waiting for Reddit OAuth callback on {REDIRECT_URI}...")
     server.handle_request()
 
 def load_existing_tokens():
@@ -66,15 +73,29 @@ def get_tokens():
     global auth_code
     threading.Thread(target=start_auth_server, daemon=True).start()
 
-    authorization_url = (
-        f"https://www.reddit.com/api/v1/authorize?client_id={CLIENT_ID}&response_type=code"
-        f"&state=RANDOM_STRING&redirect_uri={REDIRECT_URI}&duration=permanent&scope=identity history read save"
-    )
+    authorization_url = "https://www.reddit.com/api/v1/authorize?" + urlencode({
+        "client_id": CLIENT_ID,
+        "response_type": "code",
+        "state": "RANDOM_STRING",
+        "redirect_uri": REDIRECT_URI,
+        "duration": "permanent",
+        "scope": "identity history read save",
+    })
 
-    print("🌍 Opening Reddit authorization page in your browser...")
-    webbrowser.open(authorization_url)
+    print("\nOpen this URL in your browser to authorize Reddit-Fetch:\n")
+    print(authorization_url)
+    print("\nLeave this command running until the browser redirects back to localhost.\n")
 
+    try:
+        webbrowser.open(authorization_url)
+    except Exception:
+        pass
+
+    timeout = time.time() + 300
     while auth_code is None:
+        if time.time() > timeout:
+            print("❌ Authentication timed out. Re-run this command and try again.")
+            sys.exit(1)
         time.sleep(0.1)
 
     auth_string = f"{CLIENT_ID}:{CLIENT_SECRET}"

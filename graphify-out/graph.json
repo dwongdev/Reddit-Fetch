@@ -9,7 +9,7 @@
       "source_file": "setup.py",
       "source_location": "L1",
       "id": "setup_py",
-      "community": 10,
+      "community": 9,
       "norm_label": "setup.py"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L1",
       "id": "reddit_fetch_auth_py",
-      "community": 6,
+      "community": 3,
       "norm_label": "auth.py"
     },
     {
@@ -27,7 +27,7 @@
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L21",
       "id": "auth_is_headless",
-      "community": 8,
+      "community": 4,
       "norm_label": "is_headless()"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L137",
       "id": "auth_load_tokens_safe",
-      "community": 4,
+      "community": 3,
       "norm_label": "load_tokens_safe()"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L155",
       "id": "auth_save_tokens",
-      "community": 9,
+      "community": 8,
       "norm_label": "save_tokens()"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L245",
       "id": "auth_validate_credentials",
-      "community": 3,
+      "community": 5,
       "norm_label": "validate_credentials()"
     },
     {
@@ -90,16 +90,16 @@
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L282",
       "id": "auth_get_new_tokens",
-      "community": 3,
+      "community": 5,
       "norm_label": "get_new_tokens()"
     },
     {
       "label": "AuthHandler",
       "file_type": "code",
       "source_file": "reddit_fetch/auth.py",
-      "source_location": "L372",
+      "source_location": "L376",
       "id": "auth_authhandler",
-      "community": 5,
+      "community": 6,
       "norm_label": "authhandler"
     },
     {
@@ -108,34 +108,34 @@
       "source_file": "",
       "source_location": "",
       "id": "basehttprequesthandler",
-      "community": 5,
+      "community": 6,
       "norm_label": "basehttprequesthandler"
     },
     {
       "label": ".do_GET()",
       "file_type": "code",
       "source_file": "reddit_fetch/auth.py",
-      "source_location": "L373",
+      "source_location": "L377",
       "id": "auth_authhandler_do_get",
-      "community": 5,
+      "community": 6,
       "norm_label": ".do_get()"
     },
     {
       "label": ".log_message()",
       "file_type": "code",
       "source_file": "reddit_fetch/auth.py",
-      "source_location": "L387",
+      "source_location": "L391",
       "id": "auth_authhandler_log_message",
-      "community": 5,
+      "community": 6,
       "norm_label": ".log_message()"
     },
     {
       "label": "start_auth_server()",
       "file_type": "code",
       "source_file": "reddit_fetch/auth.py",
-      "source_location": "L391",
+      "source_location": "L395",
       "id": "auth_start_auth_server",
-      "community": 6,
+      "community": 3,
       "norm_label": "start_auth_server()"
     },
     {
@@ -143,80 +143,80 @@
       "file_type": "rationale",
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L22",
-      "id": "auth_rationale_22",
-      "community": 8,
-      "norm_label": "detects if the system is running in headless mode."
+      "community": 4,
+      "norm_label": "detects if the system is running in headless mode.",
+      "id": "auth_rationale_22"
     },
     {
       "label": "Detects if running inside Docker container.",
       "file_type": "rationale",
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L76",
-      "id": "auth_rationale_76",
       "community": 2,
-      "norm_label": "detects if running inside docker container."
+      "norm_label": "detects if running inside docker container.",
+      "id": "auth_rationale_76"
     },
     {
       "label": "Shows instructions for headless authentication.",
       "file_type": "rationale",
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L84",
-      "id": "auth_rationale_84",
       "community": 2,
-      "norm_label": "shows instructions for headless authentication."
+      "norm_label": "shows instructions for headless authentication.",
+      "id": "auth_rationale_84"
     },
     {
       "label": "Handles token loading safely, ensuring better error handling in headless mode.",
       "file_type": "rationale",
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L138",
-      "id": "auth_rationale_138",
-      "community": 4,
-      "norm_label": "handles token loading safely, ensuring better error handling in headless mode."
+      "community": 3,
+      "norm_label": "handles token loading safely, ensuring better error handling in headless mode.",
+      "id": "auth_rationale_138"
     },
     {
       "label": "Safely saves tokens to `tokens.json`.",
       "file_type": "rationale",
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L156",
-      "id": "auth_rationale_156",
-      "community": 9,
-      "norm_label": "safely saves tokens to `tokens.json`."
+      "community": 8,
+      "norm_label": "safely saves tokens to `tokens.json`.",
+      "id": "auth_rationale_156"
     },
     {
       "label": "Refreshes the access token and handles headless system failures.",
       "file_type": "rationale",
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L165",
-      "id": "auth_rationale_165",
       "community": 4,
-      "norm_label": "refreshes the access token and handles headless system failures."
+      "norm_label": "refreshes the access token and handles headless system failures.",
+      "id": "auth_rationale_165"
     },
     {
       "label": "Validates Reddit API credentials format.",
       "file_type": "rationale",
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L246",
-      "id": "auth_rationale_246",
-      "community": 3,
-      "norm_label": "validates reddit api credentials format."
+      "community": 5,
+      "norm_label": "validates reddit api credentials format.",
+      "id": "auth_rationale_246"
     },
     {
       "label": "Requests new authentication tokens via OAuth.",
       "file_type": "rationale",
       "source_file": "reddit_fetch/auth.py",
       "source_location": "L283",
-      "id": "auth_rationale_283",
-      "community": 3,
-      "norm_label": "requests new authentication tokens via oauth."
+      "community": 5,
+      "norm_label": "requests new authentication tokens via oauth.",
+      "id": "auth_rationale_283"
     },
     {
       "label": "Start a temporary local web server to receive the OAuth callback.",
       "file_type": "rationale",
       "source_file": "reddit_fetch/auth.py",
-      "source_location": "L392",
-      "id": "auth_rationale_392",
-      "community": 6,
+      "source_location": "L396",
+      "id": "auth_rationale_396",
+      "community": 3,
       "norm_label": "start a temporary local web server to receive the oauth callback."
     },
     {
@@ -242,9 +242,9 @@
       "file_type": "rationale",
       "source_file": "reddit_fetch/config.py",
       "source_location": "L17",
-      "id": "config_rationale_17",
       "community": 7,
-      "norm_label": "implements exponential backoff to avoid rate limiting."
+      "norm_label": "implements exponential backoff to avoid rate limiting.",
+      "id": "config_rationale_17"
     },
     {
       "label": "__init__.py",
@@ -286,7 +286,7 @@
       "label": "cli_entry()",
       "file_type": "code",
       "source_file": "reddit_fetch/main.py",
-      "source_location": "L68",
+      "source_location": "L67",
       "id": "main_cli_entry",
       "community": 1,
       "norm_label": "cli_entry()"
@@ -295,7 +295,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "reddit_fetch/main.py",
-      "source_location": "L207",
+      "source_location": "L206",
       "id": "main_main",
       "community": 1,
       "norm_label": "main()"
@@ -305,25 +305,25 @@
       "file_type": "rationale",
       "source_file": "reddit_fetch/main.py",
       "source_location": "L20",
-      "id": "main_rationale_20",
       "community": 1,
-      "norm_label": "returns true if the script is running in an interactive terminal (tty)"
+      "norm_label": "returns true if the script is running in an interactive terminal (tty)",
+      "id": "main_rationale_20"
     },
     {
       "label": "Check if authentication is available and show appropriate messages.",
       "file_type": "rationale",
       "source_file": "reddit_fetch/main.py",
       "source_location": "L27",
-      "id": "main_rationale_27",
       "community": 2,
-      "norm_label": "check if authentication is available and show appropriate messages."
+      "norm_label": "check if authentication is available and show appropriate messages.",
+      "id": "main_rationale_27"
     },
     {
       "label": "Main entry point for the CLI.",
       "file_type": "rationale",
       "source_file": "reddit_fetch/main.py",
-      "source_location": "L208",
-      "id": "main_rationale_208",
+      "source_location": "L207",
+      "id": "main_rationale_207",
       "community": 1,
       "norm_label": "main entry point for the cli."
     },
@@ -386,45 +386,63 @@
       "file_type": "rationale",
       "source_file": "reddit_fetch/api.py",
       "source_location": "L17",
-      "id": "api_rationale_17",
       "community": 0,
-      "norm_label": "gets a valid access token, refreshing if necessary."
+      "norm_label": "gets a valid access token, refreshing if necessary.",
+      "id": "api_rationale_17"
     },
     {
       "label": "Makes an API request to Reddit, handling authentication and errors.",
       "file_type": "rationale",
       "source_file": "reddit_fetch/api.py",
       "source_location": "L52",
-      "id": "api_rationale_52",
       "community": 0,
-      "norm_label": "makes an api request to reddit, handling authentication and errors."
+      "norm_label": "makes an api request to reddit, handling authentication and errors.",
+      "id": "api_rationale_52"
     },
     {
       "label": "Fetch saved Reddit posts, using `after` for full fetch and `before` for incremen",
       "file_type": "rationale",
       "source_file": "reddit_fetch/api.py",
       "source_location": "L119",
-      "id": "api_rationale_119",
       "community": 0,
-      "norm_label": "fetch saved reddit posts, using `after` for full fetch and `before` for incremen"
+      "norm_label": "fetch saved reddit posts, using `after` for full fetch and `before` for incremen",
+      "id": "api_rationale_119"
     },
     {
       "label": "Generate HTML output from posts list.",
       "file_type": "rationale",
       "source_file": "reddit_fetch/api.py",
       "source_location": "L335",
-      "id": "api_rationale_335",
       "community": 0,
-      "norm_label": "generate html output from posts list."
+      "norm_label": "generate html output from posts list.",
+      "id": "api_rationale_335"
     },
     {
       "label": "Legacy function that returns just the content for backward compatibility.",
       "file_type": "rationale",
       "source_file": "reddit_fetch/api.py",
       "source_location": "L471",
-      "id": "api_rationale_471",
       "community": 0,
-      "norm_label": "legacy function that returns just the content for backward compatibility."
+      "norm_label": "legacy function that returns just the content for backward compatibility.",
+      "id": "api_rationale_471"
+    },
+    {
+      "label": "Start a temporary local web server to receive the OAuth callback.",
+      "file_type": "rationale",
+      "source_file": "reddit_fetch/auth.py",
+      "source_location": "L392",
+      "community": 10,
+      "norm_label": "start a temporary local web server to receive the oauth callback.",
+      "id": "auth_rationale_392"
+    },
+    {
+      "label": "Main entry point for the CLI.",
+      "file_type": "rationale",
+      "source_file": "reddit_fetch/main.py",
+      "source_location": "L208",
+      "community": 11,
+      "norm_label": "main entry point for the cli.",
+      "id": "main_rationale_208"
     }
   ],
   "links": [
@@ -528,7 +546,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/auth.py",
-      "source_location": "L372",
+      "source_location": "L376",
       "weight": 1.0,
       "_src": "reddit_fetch_auth_py",
       "_tgt": "auth_authhandler",
@@ -540,7 +558,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/auth.py",
-      "source_location": "L391",
+      "source_location": "L395",
       "weight": 1.0,
       "_src": "reddit_fetch_auth_py",
       "_tgt": "auth_start_auth_server",
@@ -591,8 +609,8 @@
       "source_file": "reddit_fetch/main.py",
       "source_location": "L31",
       "weight": 1.0,
-      "_src": "main_check_authentication",
-      "_tgt": "auth_is_headless",
+      "_src": "auth_is_headless",
+      "_tgt": "main_check_authentication",
       "source": "auth_is_headless",
       "target": "main_check_authentication"
     },
@@ -603,8 +621,8 @@
       "source_file": "reddit_fetch/main.py",
       "source_location": "L74",
       "weight": 1.0,
-      "_src": "main_cli_entry",
-      "_tgt": "auth_is_headless",
+      "_src": "auth_is_headless",
+      "_tgt": "main_cli_entry",
       "source": "auth_is_headless",
       "target": "main_cli_entry"
     },
@@ -612,7 +630,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/auth.py",
-      "source_location": "L90",
+      "source_location": "L94",
       "weight": 1.0,
       "_src": "auth_show_headless_instructions",
       "_tgt": "auth_is_docker",
@@ -639,8 +657,8 @@
       "source_file": "reddit_fetch/main.py",
       "source_location": "L35",
       "weight": 1.0,
-      "_src": "main_check_authentication",
-      "_tgt": "auth_is_docker",
+      "_src": "auth_is_docker",
+      "_tgt": "main_check_authentication",
       "source": "auth_is_docker",
       "target": "main_check_authentication"
     },
@@ -651,8 +669,8 @@
       "source_file": "reddit_fetch/main.py",
       "source_location": "L73",
       "weight": 1.0,
-      "_src": "main_cli_entry",
-      "_tgt": "auth_is_docker",
+      "_src": "auth_is_docker",
+      "_tgt": "main_cli_entry",
       "source": "auth_is_docker",
       "target": "main_cli_entry"
     },
@@ -699,8 +717,8 @@
       "source_file": "reddit_fetch/main.py",
       "source_location": "L33",
       "weight": 1.0,
-      "_src": "main_check_authentication",
-      "_tgt": "auth_show_headless_instructions",
+      "_src": "auth_show_headless_instructions",
+      "_tgt": "main_check_authentication",
       "source": "auth_show_headless_instructions",
       "target": "main_check_authentication"
     },
@@ -711,8 +729,8 @@
       "source_file": "reddit_fetch/main.py",
       "source_location": "L175",
       "weight": 1.0,
-      "_src": "main_cli_entry",
-      "_tgt": "auth_show_headless_instructions",
+      "_src": "auth_show_headless_instructions",
+      "_tgt": "main_cli_entry",
       "source": "auth_show_headless_instructions",
       "target": "main_cli_entry"
     },
@@ -747,8 +765,8 @@
       "source_file": "reddit_fetch/main.py",
       "source_location": "L28",
       "weight": 1.0,
-      "_src": "main_check_authentication",
-      "_tgt": "auth_load_tokens_safe",
+      "_src": "auth_load_tokens_safe",
+      "_tgt": "main_check_authentication",
       "source": "auth_load_tokens_safe",
       "target": "main_check_authentication"
     },
@@ -759,8 +777,8 @@
       "source_file": "reddit_fetch/api.py",
       "source_location": "L18",
       "weight": 1.0,
-      "_src": "api_get_valid_access_token",
-      "_tgt": "auth_load_tokens_safe",
+      "_src": "auth_load_tokens_safe",
+      "_tgt": "api_get_valid_access_token",
       "source": "auth_load_tokens_safe",
       "target": "api_get_valid_access_token"
     },
@@ -780,7 +798,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/auth.py",
-      "source_location": "L343",
+      "source_location": "L347",
       "weight": 1.0,
       "_src": "auth_get_new_tokens",
       "_tgt": "auth_save_tokens",
@@ -831,8 +849,8 @@
       "source_file": "reddit_fetch/api.py",
       "source_location": "L21",
       "weight": 1.0,
-      "_src": "api_get_valid_access_token",
-      "_tgt": "auth_refresh_access_token_safe",
+      "_src": "auth_refresh_access_token_safe",
+      "_tgt": "api_get_valid_access_token",
       "source": "auth_refresh_access_token_safe",
       "target": "api_get_valid_access_token"
     },
@@ -843,8 +861,8 @@
       "source_file": "reddit_fetch/api.py",
       "source_location": "L75",
       "weight": 1.0,
-      "_src": "api_make_request",
-      "_tgt": "auth_refresh_access_token_safe",
+      "_src": "auth_refresh_access_token_safe",
+      "_tgt": "api_make_request",
       "source": "auth_refresh_access_token_safe",
       "target": "api_make_request"
     },
@@ -888,7 +906,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/auth.py",
-      "source_location": "L372",
+      "source_location": "L376",
       "weight": 1.0,
       "_src": "auth_authhandler",
       "_tgt": "basehttprequesthandler",
@@ -900,7 +918,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/auth.py",
-      "source_location": "L373",
+      "source_location": "L377",
       "weight": 1.0,
       "_src": "auth_authhandler",
       "_tgt": "auth_authhandler_do_get",
@@ -912,7 +930,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/auth.py",
-      "source_location": "L387",
+      "source_location": "L391",
       "weight": 1.0,
       "_src": "auth_authhandler",
       "_tgt": "auth_authhandler_log_message",
@@ -924,12 +942,12 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/auth.py",
-      "source_location": "L392",
+      "source_location": "L396",
       "weight": 1.0,
-      "_src": "auth_rationale_392",
+      "_src": "auth_rationale_396",
       "_tgt": "auth_start_auth_server",
       "source": "auth_start_auth_server",
-      "target": "auth_rationale_392",
+      "target": "auth_rationale_396",
       "confidence_score": 1.0
     },
     {
@@ -963,8 +981,8 @@
       "source_file": "reddit_fetch/api.py",
       "source_location": "L69",
       "weight": 1.0,
-      "_src": "api_make_request",
-      "_tgt": "config_exponential_backoff",
+      "_src": "config_exponential_backoff",
+      "_tgt": "api_make_request",
       "source": "config_exponential_backoff",
       "target": "api_make_request"
     },
@@ -1008,7 +1026,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/main.py",
-      "source_location": "L68",
+      "source_location": "L67",
       "weight": 1.0,
       "_src": "reddit_fetch_main_py",
       "_tgt": "main_cli_entry",
@@ -1020,7 +1038,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/main.py",
-      "source_location": "L207",
+      "source_location": "L206",
       "weight": 1.0,
       "_src": "reddit_fetch_main_py",
       "_tgt": "main_main",
@@ -1032,7 +1050,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/main.py",
-      "source_location": "L75",
+      "source_location": "L74",
       "weight": 1.0,
       "_src": "main_cli_entry",
       "_tgt": "main_is_interactive",
@@ -1056,7 +1074,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/main.py",
-      "source_location": "L82",
+      "source_location": "L81",
       "weight": 1.0,
       "_src": "main_cli_entry",
       "_tgt": "main_check_authentication",
@@ -1080,7 +1098,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/main.py",
-      "source_location": "L210",
+      "source_location": "L209",
       "weight": 1.0,
       "_src": "main_main",
       "_tgt": "main_cli_entry",
@@ -1104,12 +1122,12 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "reddit_fetch/main.py",
-      "source_location": "L208",
+      "source_location": "L207",
       "weight": 1.0,
-      "_src": "main_rationale_208",
+      "_src": "main_rationale_207",
       "_tgt": "main_main",
       "source": "main_main",
-      "target": "main_rationale_208",
+      "target": "main_rationale_207",
       "confidence_score": 1.0
     },
     {

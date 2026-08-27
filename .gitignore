@@ -11,9 +11,6 @@ docker-compose.yml
 
 # Graphify generated scratch files
 graphify-out/cache/
-AGENTS.md
-CLAUDE.md
-GEMINI.md
 
 # LLM / AI tooling
 .claude/

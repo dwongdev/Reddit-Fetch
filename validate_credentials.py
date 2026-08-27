@@ -165,8 +165,7 @@ def main():
                     title="Authentication Test Result",
                     border_style="green"
                 ))
-                result = response.json()
-                console.print(f"\n[dim]Access token received: {result.get('access_token', '')[:20]}...[/dim]")
+                console.print("\n[dim]Access token received successfully.[/dim]")
             elif response.status_code == 401:
                 error_data = response.json() if response.headers.get('content-type', '').startswith('application/json') else {}
                 console.print(Panel.fit(

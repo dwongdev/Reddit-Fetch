@@ -36,10 +36,9 @@ def check_authentication():
                 console.print(Panel.fit(
                     Text.from_markup(
                         "[bold yellow]💡 QUICK DOCKER SETUP REMINDER:[/bold yellow]\n\n"
-                        "1. Generate tokens on a browser system:\n"
-                        "   [bold]python generate_tokens.py[/bold]\n\n"
-                        "2. Copy tokens.json to your Docker data directory:\n"
-                        "   [bold]cp tokens.json /path/to/data/[/bold]\n\n"
+                        "1. Generate tokens with the Docker auth command:\n"
+                        "   [bold]docker run --rm -it --env-file .env -e DOCKER=1 -p 8080:8080 -v \"$(pwd)/data:/data\" <image> auth[/bold]\n\n"
+                        "2. Confirm data/tokens.json exists\n\n"
                         "3. Restart the container:\n"
                         "   [bold]docker restart reddit-fetcher[/bold]"
                     ),

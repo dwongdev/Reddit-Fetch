@@ -7,7 +7,7 @@ import base64
 import threading
 import webbrowser
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlencode, urlparse, parse_qs
 from reddit_fetch.config import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, USER_AGENT, TOKEN_FILE
 from rich.console import Console
 from rich.panel import Panel
@@ -82,10 +82,14 @@ def is_docker():
 
 def show_headless_instructions():
     """Shows instructions for headless authentication."""
-    authorization_url = (
-        f"https://www.reddit.com/api/v1/authorize?client_id={CLIENT_ID}&response_type=code"
-        f"&state=RANDOM_STRING&redirect_uri={REDIRECT_URI}&duration=permanent&scope=identity history read save"
-    )
+    authorization_url = "https://www.reddit.com/api/v1/authorize?" + urlencode({
+        "client_id": CLIENT_ID,
+        "response_type": "code",
+        "state": "RANDOM_STRING",
+        "redirect_uri": REDIRECT_URI,
+        "duration": "permanent",
+        "scope": "identity history read save",
+    })
     
     if is_docker():
         # Docker-specific instructions
@@ -93,15 +97,11 @@ def show_headless_instructions():
             Text.from_markup(
                 "[bold red]🐳 DOCKER CONTAINER DETECTED[/bold red]\n\n"
                 "[bold yellow]Authentication tokens are required but missing![/bold yellow]\n\n"
-                "[white]This Docker container cannot open a web browser for authentication.\n"
-                "You need to generate tokens on a system with a web browser.\n\n"
+                "[white]Run the one-shot Docker auth command to generate /data/tokens.json.\n\n"
                 "[bold cyan]SOLUTION:[/bold cyan]\n"
-                "1. On a computer with a web browser, clone this repo\n"
-                "2. Install dependencies: [bold]pip install -e .[/bold]\n"
-                "3. Create a .env file with your Reddit API credentials\n"
-                "4. Run: [bold]python generate_tokens.py[/bold]\n"
-                "5. Copy the generated [bold]tokens.json[/bold] to your Docker data directory\n"
-                "6. Restart this container\n\n"
+                "1. Run: [bold]docker run --rm -it --env-file .env -e DOCKER=1 -p 8080:8080 -v \"$(pwd)/data:/data\" <image> auth[/bold]\n"
+                "2. Open the printed Reddit URL in your browser\n"
+                "3. Restart this container\n\n"
                 "[dim]For detailed instructions, see the README.md file.[/dim]"
             ),
             title="🔑 Authentication Required",
@@ -122,7 +122,7 @@ def show_headless_instructions():
                 "   • Complete the Reddit authorization\n"
                 "   • Copy the authorization code from the redirect URL\n\n"
                 "2. Or generate tokens using the browser system:\n"
-                "   • Run [bold]python generate_tokens.py[/bold] on browser system\n"
+                "   • Run [bold]python -m reddit_fetch.generate_tokens[/bold] on browser system\n"
                 "   • Copy [bold]tokens.json[/bold] to this headless system\n\n"
                 "[bold red]MANUAL AUTHENTICATION URL:[/bold red]\n"
                 f"[link]{authorization_url}[/link]\n\n"
@@ -296,10 +296,14 @@ def get_new_tokens():
     try:
         threading.Thread(target=start_auth_server, daemon=True).start()
         
-        authorization_url = (
-            f"https://www.reddit.com/api/v1/authorize?client_id={CLIENT_ID}&response_type=code"
-            f"&state=RANDOM_STRING&redirect_uri={REDIRECT_URI}&duration=permanent&scope=identity history read save"
-        )
+        authorization_url = "https://www.reddit.com/api/v1/authorize?" + urlencode({
+            "client_id": CLIENT_ID,
+            "response_type": "code",
+            "state": "RANDOM_STRING",
+            "redirect_uri": REDIRECT_URI,
+            "duration": "permanent",
+            "scope": "identity history read save",
+        })
 
         console.print("🌍 [bold yellow]Opening Reddit authorization page in your browser...[/bold yellow]")
         
@@ -391,13 +395,14 @@ class AuthHandler(BaseHTTPRequestHandler):
 def start_auth_server():
     """Start a temporary local web server to receive the OAuth callback."""
     try:
-        port = int(REDIRECT_URI.split(":")[-1])
+        parsed = urlparse(REDIRECT_URI)
+        port = parsed.port or 80
         server = HTTPServer(("localhost", port), AuthHandler)
         console.print(f"🌍 [bold blue]Waiting for authorization on {REDIRECT_URI}...[/bold blue]")
         server.handle_request()
     except OSError as e:
         if "Address already in use" in str(e):
-            console.print(f"❌ [bold red]Port {REDIRECT_URI.split(':')[-1]} is already in use.[/bold red]")
+            console.print(f"❌ [bold red]Port {urlparse(REDIRECT_URI).port or 80} is already in use.[/bold red]")
             console.print("Please close other applications using this port or change REDIRECT_URI.")
         else:
             console.print(f"❌ [bold red]Server error: {e}[/bold red]")

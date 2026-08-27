@@ -1,11 +1,11 @@
-# Graph Report - Reddit-Fetch  (2026-05-14)
+# Graph Report - Reddit-Fetch  (2026-08-27)
 
 ## Corpus Check
-- 6 files · ~6,169 words
+- 6 files · ~11,119 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 47 nodes · 71 edges · 10 communities detected
+- 49 nodes · 71 edges · 11 communities detected
 - Extraction: 83% EXTRACTED · 17% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
@@ -19,7 +19,8 @@
 - [[_COMMUNITY_Community 6|Community 6]]
 - [[_COMMUNITY_Community 7|Community 7]]
 - [[_COMMUNITY_Community 8|Community 8]]
-- [[_COMMUNITY_Community 9|Community 9]]
+- [[_COMMUNITY_Community 10|Community 10]]
+- [[_COMMUNITY_Community 11|Community 11]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `refresh_access_token_safe()` - 9 edges
@@ -34,16 +35,16 @@
 10. `load_tokens_safe()` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `check_authentication()` --calls--> `is_headless()`  [INFERRED]
-  reddit_fetch/main.py → reddit_fetch/auth.py
-- `cli_entry()` --calls--> `is_headless()`  [INFERRED]
-  reddit_fetch/main.py → reddit_fetch/auth.py
-- `cli_entry()` --calls--> `is_docker()`  [INFERRED]
-  reddit_fetch/main.py → reddit_fetch/auth.py
-- `cli_entry()` --calls--> `show_headless_instructions()`  [INFERRED]
-  reddit_fetch/main.py → reddit_fetch/auth.py
-- `check_authentication()` --calls--> `load_tokens_safe()`  [INFERRED]
-  reddit_fetch/main.py → reddit_fetch/auth.py
+- `is_headless()` --calls--> `check_authentication()`  [INFERRED]
+  reddit_fetch/auth.py → reddit_fetch/main.py
+- `is_headless()` --calls--> `cli_entry()`  [INFERRED]
+  reddit_fetch/auth.py → reddit_fetch/main.py
+- `is_docker()` --calls--> `cli_entry()`  [INFERRED]
+  reddit_fetch/auth.py → reddit_fetch/main.py
+- `show_headless_instructions()` --calls--> `cli_entry()`  [INFERRED]
+  reddit_fetch/auth.py → reddit_fetch/main.py
+- `load_tokens_safe()` --calls--> `check_authentication()`  [INFERRED]
+  reddit_fetch/auth.py → reddit_fetch/main.py
 
 ## Communities
 
@@ -60,20 +61,20 @@ Cohesion: 0.4
 Nodes (6): is_docker(), Detects if running inside Docker container., Shows instructions for headless authentication., show_headless_instructions(), check_authentication(), Check if authentication is available and show appropriate messages.
 
 ### Community 3 - "Community 3"
-Cohesion: 0.5
-Nodes (4): get_new_tokens(), Validates Reddit API credentials format., Requests new authentication tokens via OAuth., validate_credentials()
+Cohesion: 0.4
+Nodes (4): load_tokens_safe(), Handles token loading safely, ensuring better error handling in headless mode., Start a temporary local web server to receive the OAuth callback., start_auth_server()
 
 ### Community 4 - "Community 4"
 Cohesion: 0.5
-Nodes (4): load_tokens_safe(), Handles token loading safely, ensuring better error handling in headless mode., Refreshes the access token and handles headless system failures., refresh_access_token_safe()
+Nodes (4): is_headless(), Refreshes the access token and handles headless system failures., Detects if the system is running in headless mode., refresh_access_token_safe()
 
 ### Community 5 - "Community 5"
 Cohesion: 0.5
-Nodes (2): AuthHandler, BaseHTTPRequestHandler
+Nodes (4): get_new_tokens(), Validates Reddit API credentials format., Requests new authentication tokens via OAuth., validate_credentials()
 
 ### Community 6 - "Community 6"
-Cohesion: 0.67
-Nodes (2): Start a temporary local web server to receive the OAuth callback., start_auth_server()
+Cohesion: 0.5
+Nodes (2): AuthHandler, BaseHTTPRequestHandler
 
 ### Community 7 - "Community 7"
 Cohesion: 0.67
@@ -81,35 +82,39 @@ Nodes (2): exponential_backoff(), Implements exponential backoff to avoid rate l
 
 ### Community 8 - "Community 8"
 Cohesion: 1.0
-Nodes (2): is_headless(), Detects if the system is running in headless mode.
-
-### Community 9 - "Community 9"
-Cohesion: 1.0
 Nodes (2): Safely saves tokens to `tokens.json`., save_tokens()
 
+### Community 10 - "Community 10"
+Cohesion: 1.0
+Nodes (1): Start a temporary local web server to receive the OAuth callback.
+
+### Community 11 - "Community 11"
+Cohesion: 1.0
+Nodes (1): Main entry point for the CLI.
+
 ## Knowledge Gaps
-- **18 isolated node(s):** `Detects if the system is running in headless mode.`, `Detects if running inside Docker container.`, `Shows instructions for headless authentication.`, `Handles token loading safely, ensuring better error handling in headless mode.`, `Safely saves tokens to `tokens.json`.` (+13 more)
+- **20 isolated node(s):** `Detects if the system is running in headless mode.`, `Detects if running inside Docker container.`, `Shows instructions for headless authentication.`, `Handles token loading safely, ensuring better error handling in headless mode.`, `Safely saves tokens to `tokens.json`.` (+15 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 5`** (4 nodes): `AuthHandler`, `.do_GET()`, `.log_message()`, `BaseHTTPRequestHandler`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 6`** (3 nodes): `Start a temporary local web server to receive the OAuth callback.`, `start_auth_server()`, `auth.py`
+- **Thin community `Community 6`** (4 nodes): `AuthHandler`, `.do_GET()`, `.log_message()`, `BaseHTTPRequestHandler`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 7`** (3 nodes): `exponential_backoff()`, `Implements exponential backoff to avoid rate limiting.`, `config.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 8`** (2 nodes): `is_headless()`, `Detects if the system is running in headless mode.`
+- **Thin community `Community 8`** (2 nodes): `Safely saves tokens to `tokens.json`.`, `save_tokens()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 9`** (2 nodes): `Safely saves tokens to `tokens.json`.`, `save_tokens()`
+- **Thin community `Community 10`** (1 nodes): `Start a temporary local web server to receive the OAuth callback.`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 11`** (1 nodes): `Main entry point for the CLI.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `cli_entry()` connect `Community 1` to `Community 8`, `Community 0`, `Community 2`?**
-  _High betweenness centrality (0.277) - this node is a cross-community bridge._
-- **Why does `refresh_access_token_safe()` connect `Community 4` to `Community 0`, `Community 2`, `Community 3`, `Community 6`, `Community 8`, `Community 9`?**
-  _High betweenness centrality (0.238) - this node is a cross-community bridge._
+- **Why does `cli_entry()` connect `Community 1` to `Community 0`, `Community 2`, `Community 4`?**
+  _High betweenness centrality (0.255) - this node is a cross-community bridge._
+- **Why does `refresh_access_token_safe()` connect `Community 4` to `Community 0`, `Community 2`, `Community 3`, `Community 5`, `Community 8`?**
+  _High betweenness centrality (0.218) - this node is a cross-community bridge._
 - **Why does `make_request()` connect `Community 0` to `Community 4`, `Community 7`?**
-  _High betweenness centrality (0.211) - this node is a cross-community bridge._
+  _High betweenness centrality (0.194) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `refresh_access_token_safe()` (e.g. with `get_valid_access_token()` and `make_request()`) actually correct?**
   _`refresh_access_token_safe()` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 4 inferred relationships involving `cli_entry()` (e.g. with `is_docker()` and `is_headless()`) actually correct?**

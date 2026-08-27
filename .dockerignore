@@ -96,6 +96,20 @@ docker-compose.local.yml
 README.md
 docs/
 examples/
+CHANGELOG.md
+
+# Generated analysis output
+graphify-out/
+
+# Local agent/editor tooling
+.claude/
+.codex/
+.gemini/
+.opencode/
+.aider*
+.cursor/
+.continue/
+.gitnexus/
 
 # OS generated files
 .DS_Store

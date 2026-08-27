@@ -1,5 +1,5 @@
-# Use the latest Python Alpine image with recent security patches
-FROM python:3.11-alpine3.19
+# Keep the Python minor pinned while using a current Alpine base.
+FROM python:3.11-alpine3.24
 
 # Update package lists and upgrade all packages to patch vulnerabilities
 RUN apk update && apk upgrade --no-cache
